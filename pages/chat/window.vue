@@ -453,8 +453,8 @@
 			uploadAndSendAudioMsg: function(params) {
 
 				var cos = new COS({
-					SecretId: 'AKIDb9dBPNUbuwiDZiwJq6CPXfKuQgo8LWUB',
-					SecretKey: 'at6cuvhIdgWF0UhdIFwNYWGtF9BwYtyI'
+					SecretId: '你自己的',
+					SecretKey: '你自己的'
 				});
 				/* duration:this.recordLength*1000,
 				tempFilePath:e.tempFilePath, */
