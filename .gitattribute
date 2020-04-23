@@ -1,0 +1,4 @@
+*.js linguist-language=JavaScript
+*.vue linguist-language=JavaScript
+*.html linguist-language=JavaScript
+*.scss linguist-language=JavaScript
