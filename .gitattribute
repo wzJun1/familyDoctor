@@ -1,2 +1,1 @@
-*.css linguist-language=JavaScript
-*.scss linguist-language=JavaScript
+*.* linguist-language=JavaScript
