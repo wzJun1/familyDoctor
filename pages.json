@@ -1,0 +1,73 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "家庭医生服务端",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		}, {
+			"path": "pages/patient/index",
+			"style": {
+				"navigationBarTitleText": "患者管理",
+				"enablePullDownRefresh": true,
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+
+		},
+		{
+			"path": "pages/chat/index",
+			"style": {
+				"navigationBarTitleText": "消息中心",
+				
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		},
+		{ 
+			"path": "pages/chat/window",
+			"style": {
+				"navigationBarTitleText": "聊天",
+				
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#FFFFFF"
+
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "家庭医生服务端",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#ADADB3",
+		"selectedColor": "#527CF7",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/images/tabbar_index.png",
+			"selectedIconPath": "static/images/tabbar_index_selected.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/patient/index",
+			"iconPath": "static/images/tabbar_patient.png",
+			"selectedIconPath": "static/images/tabbar_patient_selected.png",
+			"text": "患者"
+		}, {
+			"pagePath": "pages/chat/index",
+			"iconPath": "static/images/tabbar_message.png",
+			"selectedIconPath": "static/images/tabbar_message_selected.png",
+			"text": "消息"
+		}, {
+			"pagePath": "pages/index/index4",
+			"iconPath": "static/images/tabbar_my.png",
+			"selectedIconPath": "static/images/tabbar_my_selected.png",
+			"text": "我的"
+		}]
+	}
+}

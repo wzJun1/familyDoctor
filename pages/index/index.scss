@@ -1,0 +1,193 @@
+/* page {
+	background-color: $uni-bg-color-grey;
+} */
+
+.content {
+	/* display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center; */
+}
+
+.title-padding {
+	height: var(--status-bar-height);
+	/* padding-top: 44px; */
+	box-sizing: content-box;
+	width: 100%;
+	background-color: $uni-main-color;
+}
+
+.content .header {
+	width: 100%;
+	height: 300rpx;
+	background-color: $uni-main-color;
+	margin-bottom: 100rpx;
+}
+
+.content .header .main {
+	display: flex;
+	height: 150rpx;
+	align-items: center;
+	padding: 30rpx;
+}
+
+
+.content .header .main .avatar {
+	margin-right: 30rpx;
+	width: 15%;
+}
+
+.content .header .main .avatar image {
+	width: 100rpx;
+	border-radius: 100rpx;
+}
+
+.content .header .main .info {
+	width: 55%;
+	color: white;
+}
+
+.content .header .main .info .li {
+	margin-bottom: 20rpx;
+	font-size: 26rpx;
+	display: flex;
+	align-items: center;
+}
+
+.content .header .main .info .li span {
+
+	font-size: 26rpx;
+	margin-right: 20rpx;
+}
+
+.content .header .main .info .li .username {
+	font-size: 40rpx;
+
+	font-weight: bold;
+}
+
+.content .header .main .info .li .tag image {
+	display: flex;
+	width: 30rpx;
+}
+
+.content .header .main .info .li .ca {
+	width: 80rpx;
+	height: 36rpx;
+	line-height: 36rpx;
+	background-color: white;
+	color: #21c321;
+	border-radius: 40rpx;
+	text-align: center;
+
+	font-weight: bold;
+}
+
+.content .header .main .button {
+
+	align-items: center;
+	display: flex;
+}
+
+.content .header .main .button image:first-child {
+	margin-right: 50rpx;
+}
+
+.content .header .main .button image {
+	width: 60rpx;
+}
+
+
+.content .header .receiveCard {
+	width: 80%;
+
+	background-color: $uni-bg-color;
+	margin: 0 auto;
+	border-radius: 10rpx;
+	padding: 30rpx;
+	box-shadow: 1px 1px 2px 1px rgba(231, 231, 231, 0.5), -1px 2px 10px 1px rgba(231, 231, 231, 0.5);
+}
+
+.content .header .receiveCard .line {
+
+	display: flex;
+	align-items: center;
+}
+
+.content .header .receiveCard .line:first-child {
+	margin-bottom: 20rpx;
+}
+
+.content .header .receiveCard .line:first-child span:first-child {
+	font-size: 38rpx;
+	font-weight: bold;
+	color: $uni-text-color;
+}
+
+.content .header .receiveCard .line:first-child span:last-child {
+	font-size: 28rpx;
+	float: right;
+	color: $uni-keypoint-color;
+	margin-left: auto;
+	letter-spacing: 2rpx;
+}
+
+.content .header .receiveCard .line:last-child span:first-child {
+	font-size: 24rpx;
+
+	color: $uni-text-color-s;
+
+}
+
+.content .header .receiveCard .line:last-child span:nth-child(2) {
+	font-size: 24rpx;
+	float: right;
+	color: $uni-main-color;
+	margin-left: auto;
+}
+
+.content .header .receiveCard .line:last-child image {
+	width: 30rpx;
+	height: 30rpx;
+}
+
+
+.content .body .row .uni-grid-body {
+	/* #ifndef APP-NVUE */
+	display: block;
+	/* #endif */
+}
+
+.content .body .row .uni-grid-body image {
+	width: 80rpx;
+	height: 80rpx;
+}
+
+
+
+.content .body .row .uni-grid-body text {
+	font-size: 28rpx;
+	margin-top: 10rpx;
+}
+
+.grid-dynamic-box {
+	margin-bottom: 15px;
+}
+
+.grid-item-box {
+	flex: 1;
+	// position: relative;
+	/* #ifndef APP-NVUE */
+	display: flex;
+	/* #endif */
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 15px 0;
+}
+
+.grid-dot {
+	position: absolute;
+	top: 5px;
+	right: 15px;
+}

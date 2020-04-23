@@ -1,0 +1,24 @@
+<template>
+	<block>
+		<text v-if="title" class="vun-cell-group__title">{{ title }}</text>
+		<view class="vun-cell-group" :class="border ? 'vun-hairline--top-bottom' : ''">
+			<slot />
+		</view>
+	</block>
+</template>
+
+<script>
+export default {
+	props: {
+		title: String,
+		border: {
+			type: Boolean,
+			default: true
+		}
+	}
+};
+</script>
+
+<style scoped lang="scss">
+@import './index.scss';
+</style>
