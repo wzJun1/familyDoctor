@@ -8,13 +8,25 @@
 
 # 部分截图
 
-![https://i.loli.net/2020/04/23/t4b7lq9FBuEfQoA.png]()
+![](https://i.loli.net/2020/04/23/t4b7lq9FBuEfQoA.png)
 
 
 
-# 未完待续
 
 
+# 完成页面
+
+1.首页
+
+2.患者页面
+
+3.即时通讯页（腾讯云IM）
+
+
+
+# 导入项目
+
+使用 HBuilderX 打开项目即可
 
 
 
