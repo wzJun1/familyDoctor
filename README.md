@@ -9,7 +9,7 @@
 # 部分截图
 
 ![](https://i.loli.net/2020/04/23/t4b7lq9FBuEfQoA.png)
-<img src="https://i.loli.net/2020/04/29/RoUXbyqLkYdTFl5.png" style="zoom:50%;" />
+![](https://i.loli.net/2020/04/29/QIbnOA16JClLaSH.png)
 
 
 
