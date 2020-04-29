@@ -44,6 +44,18 @@
 
 https://www.ui.cn/detail/519067.html
 
+Vue.Js
+
+ https://vuejs.org
+
+uni-app
+
+ https://uniapp.dcloud.io
+
+以及本项目使用的各插件开发者
+
+感谢！
+
 
 
 # 申明
