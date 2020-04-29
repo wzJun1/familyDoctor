@@ -522,8 +522,8 @@
 			uploadAndSendAudioMsg: function(params) {
 
 				var cos = new COS({
-					SecretId: 'AKIDb9dBPNUbuwiDZiwJq6CPXfKuQgo8LWUB',
-					SecretKey: 'at6cuvhIdgWF0UhdIFwNYWGtF9BwYtyI'
+					SecretId: '',
+					SecretKey: ''
 				});
 			  
 				let filePath = params.tempFilePath;
