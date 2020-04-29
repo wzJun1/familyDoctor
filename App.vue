@@ -20,11 +20,13 @@
 				//自动监听并更新 sdk 的ready 状态 （未登录是 notReady  登录后是ready）
 				this.$store.commit("toggleIsSDKReady", isSDKReady);
 		        //sdk ready 后  肯定完成了登录操作    这里可以获取用户存储在im的基础信息/离线消息/黑名单列表
+				 
 			},
 			
 			onReceiveMessage({data: messageList}) {
 				// this.handleAt(messageList);
 				this.$store.commit("pushCurrentMessageList", messageList);
+				console.log("收到一条新消息")
 			},
 			//根据消息列表请求聊天对象的用户信息 并完成数据拼接
 		
@@ -112,5 +114,9 @@
 	}
 	textarea{
 		overflow-y: scroll !important;
+		-webkit-transform: translate3d(0, 0, 0) !important;
+	}
+	input{
+		-webkit-transform: translate3d(0, 0, 0) !important;
 	}
 </style>

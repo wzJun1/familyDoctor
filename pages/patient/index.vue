@@ -245,7 +245,7 @@
 		    </view>
 		</uni-drawer>
 
-		<vus-layer></vus-layer>
+		 
 	</view>
 </template>
 

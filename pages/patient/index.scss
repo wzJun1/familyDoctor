@@ -8,7 +8,7 @@ image {
 	will-change: transform
 }
 .uni-drawer{
-	z-index: 9999999 !important ;
+	z-index: 999 !important ;
 }
 .content .wuc-tab {
 	position: fixed;
@@ -532,6 +532,9 @@ image {
 }
 .drawer-button{
 	display: flex;
+	position: absolute;
+	bottom: 20rpx;
+	width: 100%;
 }
 .drawer-button .close{
 	width: 40%;

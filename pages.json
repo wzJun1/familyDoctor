@@ -30,13 +30,24 @@
 			"path": "pages/chat/window",
 			"style": {
 				"navigationBarTitleText": "聊天",
-				
+				"enablePullDownRefresh": true,
 				"navigationBarTextStyle": "black",
 				"navigationBarBackgroundColor": "#FFFFFF"
 
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/user/user",
+            "style" : {
+			    "navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"app-plus": {
+					"titleNView": false
+				}
+			} 
+			 
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "家庭医生服务端",
@@ -64,7 +75,7 @@
 			"selectedIconPath": "static/images/tabbar_message_selected.png",
 			"text": "消息"
 		}, {
-			"pagePath": "pages/index/index4",
+			"pagePath": "pages/user/user",
 			"iconPath": "static/images/tabbar_my.png",
 			"selectedIconPath": "static/images/tabbar_my_selected.png",
 			"text": "我的"

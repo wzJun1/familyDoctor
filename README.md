@@ -9,6 +9,7 @@
 # 部分截图
 
 ![](https://i.loli.net/2020/04/23/t4b7lq9FBuEfQoA.png)
+<img src="https://i.loli.net/2020/04/29/RoUXbyqLkYdTFl5.png" style="zoom:50%;" />
 
 
 
@@ -19,6 +20,8 @@
 2.患者页面
 
 3.即时通讯页（腾讯云IM）
+
+4.医生个人中心
 
 
 
@@ -45,6 +48,7 @@ https://www.ui.cn/detail/519067.html
 
 # 申明
 
-开源协议  [GPL-3.0](https://github.com/wzJun1/familyDoctor/blob/master/LICENSE)  ，禁止商用
+开源协议  [GPL-3.0](https://github.com/wzJun1/familyDoctor/blob/master/LICENSE)  ，禁止商用，禁止用于违法乱纪活动
 
 此项目仅供学习交流，如作它用所承受的法律责任一概与作者无关
+

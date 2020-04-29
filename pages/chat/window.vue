@@ -7,20 +7,20 @@
 			<view class="cu-item" :class="item.flow=='out'?'self':''" v-for="(item,index) in msgList" :key="index" :id="item.ID">
 				<block v-if="item.flow=='out'">
 					<view class="main">
-						<view class="content bg-green shadow" v-if="item.payload.text.indexOf('f_d_1_text') >= 0">
-							<text>{{ParsingText(item.payload.text)}}</text>
+						<view class="content bg-green shadow myInfoBorder" v-if="item.payload.text.indexOf('f_d_1_text') >= 0">
+							<text :selectable="true">{{ParsingText(item.payload.text)}}</text>
 						</view>
 						 
 						 
 						
-						<view class="content bg-green shadow voice-button" v-else-if="item.payload.text.indexOf('f_d_2_voice') >= 0" @click="playVoice(item.payload.text,item.ID)">
-							<text :style="'margin-left: '+ (ParsingVoice(item.payload.text) <= 10 ? (ParsingVoice(item.payload.text)*5) : (10*5 + (ParsingVoice(item.payload.text)-10)*2)) +'px;'">{{ParsingVoice(item.payload.text)}}"</text>
+						<view class="content bg-green shadow voice-button myInfoBorder" v-else-if="item.payload.text.indexOf('f_d_2_voice') >= 0" @click="playVoice(item.payload.text,item.ID)">
+							<text :selectable="true" :style="'margin-left: '+ (ParsingVoice(item.payload.text) <= 10 ? (ParsingVoice(item.payload.text)*5) : (10*5 + (ParsingVoice(item.payload.text)-10)*2)) +'px;'">{{ParsingVoice(item.payload.text)}}"</text>
 							<image src="../../static/images/voice-left.png" class="content-voice" mode="widthFix" :class="ComputedClassContentVoice(item.ID)"></image>
 						</view>
 						
 						
-						<view class="content bg-green shadow" v-else>
-							<text>{{ParsingText(item.payload.text)}}</text>
+						<view class="content bg-green shadow myInfoBorder" v-else>
+							<text :selectable="true">{{ParsingText(item.payload.text)}}</text>
 						</view>
 						
 					</view>
@@ -33,17 +33,17 @@
 					<view class="cu-avatar radius" :style="'background-image:url('+toUserInfo.img+');'"></view>
 					<view class="main">
 						
-						<view class="content shadow" v-if="item.payload.text.indexOf('f_d_1_text') >= 0">
-							<text>{{ParsingText(item.payload.text)}}</text>
+						<view class="content shadow otherInfoBorder" v-if="item.payload.text.indexOf('f_d_1_text') >= 0">
+							<text :selectable="true">{{ParsingText(item.payload.text)}}</text>
 						</view>
 						
-						<view class="content shadow voice-button" v-else-if="item.payload.text.indexOf('f_d_2_voice') >= 0" @click="playVoice(item.payload.text,item.ID)">
+						<view class="content shadow voice-button otherInfoBorder" v-else-if="item.payload.text.indexOf('f_d_2_voice') >= 0" @click="playVoice(item.payload.text,item.ID)">
 							<image src="../../static/images/voice-right.png" class="content-voice" mode="widthFix" :class="ComputedClassContentVoice(item.ID)"></image>
-							<text :style="'margin-right: '+ (ParsingVoice(item.payload.text) <= 10 ? (ParsingVoice(item.payload.text)*5) : (10*5 + (ParsingVoice(item.payload.text)-10)*2)) +'px;'">{{ParsingVoice(item.payload.text)}}"</text>
+							<text :selectable="true" :style="'margin-right: '+ (ParsingVoice(item.payload.text) <= 10 ? (ParsingVoice(item.payload.text)*5) : (10*5 + (ParsingVoice(item.payload.text)-10)*2)) +'px;'">{{ParsingVoice(item.payload.text)}}"</text>
 						</view>
 						
-						<view class="content shadow" v-else>
-							<text>{{ParsingText(item.payload.text)}}</text>
+						<view class="content shadow otherInfoBorder" v-else>
+							<text :selectable="true">{{ParsingText(item.payload.text)}}</text>
 						</view>
 						
 					</view>
@@ -60,21 +60,22 @@
 				<text class="text-grey" :class="isVoice?'cuIcon-keyboard':'cuIcon-sound'" @tap="switchVoice"></text>
 			</view>
 			
-			<view class="textarea-box">
-				<textarea :fixed="true" maxlength="1000" :disable-default-padding="true" :auto-height="true" class="" v-model="textMsg" @focus="textareaFocus" />
+			<!-- <view class="textarea-box">
+				<textarea :show-confirm-bar="false" :adjust-position="true" placeholder="请输入" :fixed="true" maxlength="1000" :disable-default-padding="true" :auto-height="true" class="" v-model="textMsg" @focus="textareaFocus" />
 				 
 			</view>
-			
+			 -->
 			 
-			 <view class="sendButton">
-			 	<button class="cu-btn bg-green shadow" @tap="sendText">发送</button>
-			 </view>
+			  
 			
-			<!-- <input auto-height="true" class="solid-bottom" maxlength="300" v-model="textMsg" @focus="textareaFocus"></input> -->
-			<!-- <view class="action">
-				<text class="cuIcon-emojifill text-grey"></text>
-			</view> -->
+			<input :adjust-position="true" auto-height="true" class="solid-bottom" confirm-type="send" v-model="textMsg" @focus="textareaFocus"></input>
 			
+			<view class="action" @tap="showMore">
+				<text class="cuIcon-moreandroid text-grey"></text>
+			</view>
+			<view class="sendButton">
+				<button class="cu-btn bg-green shadow" @tap="sendText">发送</button>
+			</view>
 			
 
 		</view>
@@ -91,6 +92,69 @@
 			</view>
  
 
+		</view>
+		
+		
+		<!-- 抽屉栏 -->
+		<view class="popup-layer" :class="popupLayerClass" @touchmove.stop.prevent="discard">
+			<!-- 表情 -->
+			<swiper class="emoji-swiper" :class="{hidden:hideEmoji}" indicator-dots="true" duration="150">
+				<swiper-item v-for="(page,pid) in emojiList" :key="pid">
+					<view v-for="(em,eid) in page" :key="eid" @tap="addEmoji(em)">
+						<image mode="widthFix" :src="'/static/img/emoji/'+em.url"></image>
+					</view>
+				</swiper-item>
+			</swiper>
+			<!-- 更多功能 相册-拍照-红包 -->
+			<view class="more-layer" :class="{hidden:hideMore}">
+				<view class="list">
+					
+					<view class="large">
+						<view class="box" @tap="chooseImage">
+							<view class="icon tupian2"></view>
+						</view>
+						
+						<span>相册</span>
+					</view>
+					
+					<view class="large">
+						<view class="box" @tap="camera">
+							<view class="icon paizhao"></view>
+						</view>
+						
+						<span>拍照</span>
+					</view>
+					
+					<view class="large">
+						<view class="box" @tap="handRedEnvelopes">
+							<view class="cuIcon-form" style="font-size: 50rpx;"></view>
+						</view>
+						
+						<span>在线诊断</span>
+					</view>
+					
+					<view class="large">
+						<view class="box" @tap="handRedEnvelopes">
+							<view class="cuIcon-safe" style="font-size: 50rpx;"></view>
+						</view>
+						
+						<span>保健品推荐</span>
+					</view>
+					 
+					<!-- <view class="box" @tap="camera">
+						<view class="icon paizhao"></view>
+						<span>拍照</span>
+					</view>
+					<view class="box" @tap="handRedEnvelopes">
+						<view class="icon hongbao"></view>
+						<span>在线诊断</span>
+					</view>
+					<view class="box" @tap="handRedEnvelopes">
+						<view class="icon hongbao"></view>
+						<span>保健品推荐</span>
+					</view> -->
+				</view>
+			</view>
 		</view>
 
 		<!-- 录音UI效果 -->
@@ -369,8 +433,12 @@
 				console.warn('setMessageRead error:', imError);
 			});
 		},
+		onPullDownRefresh() {
+			this.loadHistory();
+			uni.stopPullDownRefresh();
+		},
 		methods: {
-			
+			 
 			ParsingText:function(text){
 				try{
 					let Json = JSON.parse(text);
@@ -381,7 +449,7 @@
 					
 				}catch(err){
 					console.log(err)
-					return "";
+					return text;
 				}
 			},
 			//播放
@@ -449,15 +517,15 @@
 				}
 			},
 			//音频上传发送
+			 
 
 			uploadAndSendAudioMsg: function(params) {
 
 				var cos = new COS({
-					SecretId: '你自己的',
-					SecretKey: '你自己的'
+					SecretId: 'AKIDb9dBPNUbuwiDZiwJq6CPXfKuQgo8LWUB',
+					SecretKey: 'at6cuvhIdgWF0UhdIFwNYWGtF9BwYtyI'
 				});
-				/* duration:this.recordLength*1000,
-				tempFilePath:e.tempFilePath, */
+			  
 				let filePath = params.tempFilePath;
 				var that = this;
 				cos.postObject({
@@ -470,7 +538,8 @@
 					console.log(1111111111111111111111);
 					console.log(err || data);
 					if (data.statusCode == 200) {
-
+						console.log("？？")
+						
 						let content = {
 							type: 'f_d_2_voice',
 							content: data.Location,
@@ -492,30 +561,11 @@
 								duration: 0
 							});
 						})
-
-						console.log(data.Location);
+ 
+					 
 					}
 				});
-
-				/* uni.getFileInfo({
-					filePath:filePath,
-					success: function (file) {
-						 
-					    cos.postObject({
-					     	Bucket: 'test-familydoctor-1301909872',
-					     	Region: 'ap-chengdu',
-					     	Key: Number(Math.random().toString().substr(3,length) + Date.now()).toString(36) + ".aac",
-					     	FilePath: filePath,
-					    },	function (err, data) {
-								console.log(1111111111111111111111);
-								console.log(err || data);
-								if(data.statusCode == 200){
-									console.log(data.Location);
-								}
-						});
-						 
-					}
-				}) */
+ 
 
 			},
 
@@ -534,29 +584,35 @@
 			},
 			// 接受消息(定位消息)
 			screenMsg(newVal, oldVal) {
-
-
-				this.$nextTick(() => {
-					uni.pageScrollTo({
-						scrollTop: 99999,
-						duration: 0
-					});
-				});
-				/* this.$nextTick(()=> {this.scrollToView =newVal[newVal.length-1].ID});
-				this.$forceUpdate() */
-				/* try{
-					if(newVal[0].ID && oldVal[0].ID){
-						if(newVal[0].ID != oldVal[0].ID && newVal.length>=this.count ){
-							this.$nextTick(()=> {this.scrollToView =oldVal[0].ID});
-						}else{
-							this.$nextTick(()=> {this.scrollToView =newVal[newVal.length-1].ID});
-						}
-					}else{
-						this.$nextTick(()=> {this.scrollToView =newVal[newVal.length-1].ID});
-					}
-				}catch(e){
+ 
+				if((typeof newVal[0] !="undefined" && newVal[0].ID) && (typeof oldVal[0] !="undefined" && oldVal[0].ID)){
+					 
+					 
 					
-				} */
+					if(newVal[0].ID != oldVal[0].ID && newVal.length>=this.count ){
+						this.$nextTick(() => {
+							uni.pageScrollTo({
+								scrollTop: 0,
+								duration: 1000
+							});
+						});
+					}else{
+						this.$nextTick(() => {
+							uni.pageScrollTo({
+								scrollTop: 99999,
+								duration: 0
+							});
+						});
+					}
+					
+				}else{
+					this.$nextTick(() => {
+						uni.pageScrollTo({
+							scrollTop: 99999,
+							duration: 0
+						});
+					});
+				}
 
 			},
 			//触发滑动到顶部(加载历史信息记录)
@@ -576,9 +632,12 @@
 				});
 				//这段代码很重要，不然每次加载历史数据都会跳到顶部
 				this.$nextTick(function() {
-					this.scrollToView = this.nextReqMessageID; //跳转上次的第一行信息位置
+					 
 					this.$nextTick(function() {
-						this.scrollAnimation = true; //恢复滚动动画
+						uni.pageScrollTo({
+							scrollTop: 0,
+							duration: 1000
+						});
 					});
 
 				});
@@ -956,14 +1015,12 @@
 							let sec = that.recordLength % 60;
 							min = min < 10 ? '0' + min : min;
 							sec = sec < 10 ? '0' + sec : sec;
-							//msg.length = min+':'+sec;
-							//const innerAudioContext = uni.createInnerAudioContext();
-							//innerAudioContext.src = e.tempFilePath;
-							//innerAudioContext.play();
 							that.sendMsg(msg, 'voice');
+							
+							 
 						}
 					})
-
+					 
 
 
 				} else {
@@ -1010,11 +1067,11 @@
 	.cu-bar.foot {
 		transition: all .15s linear;
 		display: flex;
-		background-color: #f8f8f8;
+		
 	}
 
 	.showLayer {
-		transform: translate3d(0, -42vw, 0);
+		transform: translate3d(0, -32vw, 0);
 	}
 
 	.textbox {
@@ -1028,13 +1085,13 @@
 		width: calc(100% - 2rpx);
 		height: 68rpx;
 		border-radius: 70rpx;
-		border: solid 1rpx #cdcdcd;
+		border: solid 1.5px #8799a3;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		font-size: 28rpx;
 		background-color: #fff;
-		color: #555;
+		color: #8799a3;
 
 		&.recording {
 			background-color: #e5e5e5;
@@ -1235,7 +1292,7 @@
 		
 		overflow-y: scroll;
 		padding: 20rpx;
-		background-color: white;
+		background-color: #f8f8f8;
 		border-radius: 10rpx;
 		margin: 10rpx;
 		width: 70%;
@@ -1244,5 +1301,87 @@
 		overflow-y: scroll;
 		word-break: break-all;
 		 
+	}
+	.bg-green{
+		background-color: $uni-main-color;
+	}
+	
+	.myInfoBorder{
+		border-radius: 20rpx 0rpx 20rpx 20rpx !important;
+	}
+	.otherInfoBorder{
+		border-radius: 0rpx 20rpx 20rpx 20rpx !important;
+		box-shadow: #ebebeb 0px 0px 20rpx !important;
+	}
+	.popup-layer{
+		&.showLayer{transform: translate3d(0,-32vw,0);}
+		transition: all .15s linear;
+		width: 100%;
+		height: 32vw;
+		 
+		background-color: white;
+		border-top: solid 1upx #ddd;
+		position: fixed;
+		z-index: 20;
+		top: 100%;
+		.emoji-swiper{
+			height: 40vw;
+			swiper-item{
+				display: flex;
+				align-content: flex-start;
+				flex-wrap: wrap;
+				view{
+					width: 12vw;
+					height: 12vw;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					image{
+						width: 8.4vw;
+						height: 8.4vw;
+					}
+				}
+			}
+		}
+		.more-layer{
+			width: 100%;
+			height: 32vw;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.list{
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				
+				.large{
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					flex: 1;
+					&>span{
+						font-size: 26rpx;
+						 
+					}
+					.box{
+						width: 100rpx;
+						height: 100rpx;
+						border-radius: 100rpx;
+						background-color: $uni-bg-color-grey;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						margin: 0 3vw 2vw 3vw;
+						
+						.icon{
+							font-size: 50rpx;
+						}
+					}
+				}
+				
+				 
+			}
+		}
 	}
 </style>

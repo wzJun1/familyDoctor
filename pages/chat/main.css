@@ -2274,6 +2274,7 @@ button.icon.lg {
 	min-height: 80upx;
 	line-height: 40upx;
 	text-align: left;
+	
 }
 
 .cu-chat .cu-item>.main .content:not([class*="bg-"]) {
@@ -2297,7 +2298,7 @@ button.icon.lg {
 }
 
 .cu-chat .cu-item>.main .content::after {
-	content: "";
+	/* content: "";
 	top: 27upx;
 	transform: rotate(45deg);
 	position: absolute;
@@ -2308,7 +2309,7 @@ button.icon.lg {
 	height: 24upx;
 	left: -12upx;
 	right: initial;
-	background-color: inherit;
+	background-color: inherit; */
 }
 
 .cu-chat .cu-item.self>.main .content::after {
@@ -2317,7 +2318,7 @@ button.icon.lg {
 }
 
 .cu-chat .cu-item>.main .content::before {
-	content: "";
+/* 	content: "";
 	top: 30upx;
 	transform: rotate(45deg);
 	position: absolute;
@@ -2330,7 +2331,7 @@ button.icon.lg {
 	right: initial;
 	background-color: inherit;
 	filter: blur(5upx);
-	opacity: 0.3;
+	opacity: 0.3; */
 }
 
 .cu-chat .cu-item>.main .content:not([class*="bg-"])::before {
