@@ -21,15 +21,3 @@ const app = new Vue({
 })
 app.$mount()
 
-
-/* 
-
-腾讯云IM 即时通讯云
-
-SDKAppID：复制
-1400354370
-密钥：复制
-4d4ca7c92cb7a15ee28e671a647617304e448be0fb3198bf70ef72a7c69f695d
-
-
- */
